@@ -172,6 +172,8 @@ insns_t *x_8_addr = generate_size8_base_case(&fp, sign);
 	}
 	fp += (neon_x8_t - neon_x8) / 4;
 #else
+	/*
+	 * !!! Untested vfp code here
 	memcpy(fp, vfp_x8, vfp_end - vfp_x8);
 	if(sign > 0) {
 		fp[65] ^= 0x00000040; 
@@ -188,6 +190,7 @@ insns_t *x_8_addr = generate_size8_base_case(&fp, sign);
 		fp[118] ^= 0x00000040; 
 	}
 	fp += (vfp_end - vfp_x8) / 4;
+	*/
 #endif
 #endif
 //uint32_t *x_8_t_addr = fp;
@@ -206,6 +209,7 @@ insns_t *x_8_addr = generate_size8_base_case(&fp, sign);
 		}
 		fp += (neon_x8 - neon_x4) / 4;
 	#else
+		/** Untestest but moved to arch/vpf
 		memcpy(fp, vfp_x4, vfp_x8 - vfp_x4);
 		if(sign > 0) {
 			fp[36] ^= 0x00000040; 
@@ -214,6 +218,7 @@ insns_t *x_8_addr = generate_size8_base_case(&fp, sign);
 			fp[44] ^= 0x00000040;
 		}
 		fp += (vfp_x8 - vfp_x4) / 4;
+		*/
 	#endif
 #endif
 	insns_t *start = generate_start_init(&fp, p);
