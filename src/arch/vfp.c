@@ -1,7 +1,7 @@
 #include "arch_codegen.h"
 #include "ffts.h"
 insns_t* generate_size8_base_case(insns_t **fp, int sign ) { 
-	insns_t * x_8_addr = *fp
+	insns_t * x_8_addr = *fp;
 	memcpy(*fp, vfp_x8, vfp_end - vfp_x8);
 	if(sign > 0) {
 		*fp[65] ^= 0x00000040; 
@@ -37,6 +37,10 @@ insns_t* generate_size4_base_case(insns_t **fp, int sign) {
 
 insns_t* generate_start_init(insns_t **fp, ffts_plan_t *p  ) {
 	insns_t	* start = *fp;
+	return start;
+}
+
+void generate_start(insns_t **fp, ffts_plan_t * p, insns_t * x_4_addr, insns_t* x_8_addr, size_t leafN ,size_t N, size_t *pps, int sign) {
 	**fp = PUSH_LR(); fp++;
 	**fp = 0xed2d8b10; fp++;
 
@@ -56,10 +60,6 @@ insns_t* generate_start_init(insns_t **fp, ffts_plan_t *p  ) {
 	ADDI(fp, 0, 2, 0), // mov out into r0
 	**fp = LDRI(2, 1, ((uint32_t)&p->ee_ws) - ((uint32_t)p)); *fp++; 
 	MOVI(fp, 11, p->i0);
-	return start;
-}
-
-insns_t * generate_start(insns_t **fp, ffts_plan_t * p, insns_t * x_4_addr, insns_t* x_8_addr, size_t leafN ,size_t N, size_t *pps) {
 			memcpy(fp, vfp_e, vfp_o - vfp_e);
 			if(sign > 0) {
 				*fp[64] ^= 0x00000040; *fp[65] ^= 0x00000040; *fp[68] ^= 0x00000040; *fp[75] ^= 0x00000040;

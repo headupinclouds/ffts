@@ -253,7 +253,7 @@ insns_t *x_8_addr = generate_size8_base_case(&fp, sign);
   	#endif
 
 #endif
-	generate_start(&fp, p , x_4_addr, x_8_addr, leafN, N , pps);	
+	generate_start(&fp, p , x_4_addr, x_8_addr, leafN, N , pps, sign);	
 	
 #ifdef __arm__
 	#ifdef HAVE_NEON

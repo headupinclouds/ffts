@@ -174,7 +174,7 @@ insns_t* generate_start_init(insns_t **fp, ffts_plan_t *p  ) {
 
 
 
-insns_t * generate_start(insns_t **fp, ffts_plan_t * p, insns_t * x_4_addr, insns_t* x_8_addr, size_t leafN ,size_t N, size_t *pps) {
+void generate_start(insns_t **fp, ffts_plan_t * p, insns_t * x_4_addr, insns_t* x_8_addr, size_t leafN ,size_t N, size_t *pps , int sign ) {
 
 	uint32_t lp_cnt = p->i0 * 4;
 //fprintf(stderr, "Body start address = %016p\n", start);
