@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 2.8)
 
 project(ffts C ASM)
 
-option(ENABLE_SSE "Enables the use of SSE instructions." OFF)
+add_definitions(-DENABLE_SSE)
+
+option(ENABLE_SSE "Enables the use of SSE instructions." ON)
 option(ENABLE_NEON "Enables the use of NEON instructions." OFF)
 option(ENABLE_VFP "Enables the use of VFP instructions." OFF)
 option(ENABLE_SINGLE "Enables the use of single precision floating point numbers." ON)
-option(DISABLE_DYNAMIC_CODE "Disables the use of dynamic machine code generation." OFF)
+option(DISABLE_DYNAMIC_CODE "Disables the use of dynamic machine code generation." ON)
 option(ENABLE_JNI "Builds the JNI code." OFF)
 option(ENABLE_SHARED "Enable building a shared library." OFF)
 
